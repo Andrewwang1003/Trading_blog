@@ -135,6 +135,32 @@
         canvas {
             width: 100% !important;
             height: 300px !important;
+            cursor: pointer;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            pointer-events: none;
+            z-index: 1000;
+            border: 1px solid #333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
         }
 
         .trades-table {
@@ -162,6 +188,46 @@
         .trades-table td {
             padding: 20px;
             border-bottom: 1px solid #1a1a1a;
+        }
+
+        .trades-table th:nth-child(1),
+        .trades-table td:nth-child(1) {
+            width: 12%;
+        }
+
+        .trades-table th:nth-child(2),
+        .trades-table td:nth-child(2) {
+            width: 12%;
+        }
+
+        .trades-table th:nth-child(3),
+        .trades-table td:nth-child(3) {
+            width: 12%;
+        }
+
+        .trades-table th:nth-child(4),
+        .trades-table td:nth-child(4) {
+            width: 10%;
+        }
+
+        .trades-table th:nth-child(5),
+        .trades-table td:nth-child(5) {
+            width: 12%;
+        }
+
+        .trades-table th:nth-child(6),
+        .trades-table td:nth-child(6) {
+            width: 12%;
+        }
+
+        .trades-table th:nth-child(7),
+        .trades-table td:nth-child(7) {
+            width: 12%;
+        }
+
+        .trades-table th:nth-child(8),
+        .trades-table td:nth-child(8) {
+            width: 18%;
         }
 
         .trades-table tbody tr {
@@ -207,24 +273,29 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Current Portfolio</div>
-                <div class="stat-value">$47,350</div>
+                <div class="stat-value">$12,153</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Current Cash</div>
+                <div class="stat-value">$7,020</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total Return</div>
-                <div class="stat-value positive">+18.5%</div>
+                <div class="stat-value positive">+20.44%</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Active Positions</div>
-                <div class="stat-value">6</div>
+                <div class="stat-value">2</div>
             </div>
         </div>
 
-        <h2 class="section-title">Portfolio Growth (Last 8 Weeks)</h2>
+        <h2 class="section-title">Portfolio Growth (Last 4 Weeks)</h2>
         <div class="chart-container">
             <div class="loading-overlay" id="chartLoading">
                 <div class="loading-spinner"></div>
             </div>
             <canvas id="portfolioChart"></canvas>
+            <div class="tooltip" id="chartTooltip" style="display: none;"></div>
         </div>
 
         <h2 class="section-title">Current Holdings</h2>
@@ -241,65 +312,78 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="stock-symbol">AAPL</td>
-                    <td>Sep 15, 2024</td>
-                    <td>50</td>
-                    <td>$175.20</td>
-                    <td>$189.45</td>
-                    <td class="positive">+$712.50 (+8.1%)</td>
+                    <td class="stock-symbol">RKLB</td>
+                    <td>Oct 3, 2025</td>
+                    <td>17</td>
+                    <td>$53.20</td>
+                    <td>$63.34</td>
+                    <td class="positive">+$10.14 (+20.8%)</td>
                 </tr>
                 <tr>
-                    <td class="stock-symbol">MSFT</td>
-                    <td>Sep 22, 2024</td>
-                    <td>30</td>
-                    <td>$412.80</td>
-                    <td>$428.90</td>
-                    <td class="positive">+$483.00 (+3.9%)</td>
+                    <td class="stock-symbol">UAMY</td>
+                    <td>Oct 1, 2025</td>
+                    <td>322</td>
+                    <td>$7.01</td>
+                    <td>$12.60</td>
+                    <td class="positive">+$5.59 (+80.1%)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title" style="margin-top: 60px;">Recent Trades</h2>
+        <table class="trades-table">
+            <thead>
+                <tr>
+                    <th>Stock</th>
+                    <th>Entry Date</th>
+                    <th>Exit Date</th>
+                    <th>Shares Traded</th>
+                    <th>Price at Entry</th>
+                    <th>Price at Exit</th>
+                    <th>P/L</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="stock-symbol">ASTS</td>
+                    <td>Oct 8, 2025</td>
+                    <td>Oct 8, 2025</td>
+                    <td>11</td>
+                    <td>$87.17</td>
+                    <td>$84.12</td>
+                    <td class="negative">-$33.55 (-0.54%)</td>
                 </tr>
                 <tr>
-                    <td class="stock-symbol">NVDA</td>
-                    <td>Aug 30, 2024</td>
-                    <td>40</td>
-                    <td>$118.50</td>
-                    <td>$135.20</td>
-                    <td class="positive">+$668.00 (+14.1%)</td>
+                    <td class="stock-symbol">WULF</td>
+                    <td>Oct 2, 2025</td>
+                    <td>Oct 2, 2025</td>
+                    <td>80</td>
+                    <td>$12.03</td>
+                    <td>$11.80</td>
+                    <td class="negative">-$18.40 (-0.31%)</td>
                 </tr>
                 <tr>
-                    <td class="stock-symbol">GOOGL</td>
-                    <td>Sep 8, 2024</td>
-                    <td>35</td>
-                    <td>$156.30</td>
-                    <td>$152.80</td>
-                    <td class="negative">-$122.50 (-2.2%)</td>
-                </tr>
-                <tr>
-                    <td class="stock-symbol">TSLA</td>
-                    <td>Oct 1, 2024</td>
-                    <td>25</td>
-                    <td>$242.50</td>
-                    <td>$258.30</td>
-                    <td class="positive">+$395.00 (+6.5%)</td>
-                </tr>
-                <tr>
-                    <td class="stock-symbol">AMD</td>
-                    <td>Sep 5, 2024</td>
-                    <td>60</td>
-                    <td>$142.20</td>
-                    <td>$148.75</td>
-                    <td class="positive">+$393.00 (+4.6%)</td>
+                    <td class="stock-symbol">UMAC</td>
+                    <td>Sep 19, 2025</td>
+                    <td>Oct 10, 2025</td>
+                    <td>211</td>
+                    <td>$11.50</td>
+                    <td>$13.69</td>
+                    <td class="positive">+$462.09 (+3.76%)</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <script>
-        // Portfolio growth data (last 8 weeks)
-        const dates = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'];
-        const values = [40000, 41200, 40800, 42500, 43100, 44800, 46200, 47350];
+        // Portfolio growth data
+        const dates = ['Sep 14', 'Sep 18', 'Sep 22', 'Sep 26', 'Sep 30', 'Oct 4', 'Oct 8'];
+        const values = [9202, 9511, 10470, 9821, 10263, 10950, 11915];
 
         const canvas = document.getElementById('portfolioChart');
         const ctx = canvas.getContext('2d');
         const loadingOverlay = document.getElementById('chartLoading');
+        const tooltip = document.getElementById('chartTooltip');
 
         // Performance optimizations
         let resizeTimeout;
@@ -310,13 +394,26 @@
         const minValue = Math.min(...values);
         const maxValue = Math.max(...values);
         const valueRange = maxValue - minValue;
+        
+        // Interactive chart variables
+        let hoveredPoint = -1;
+        let chartBounds = {};
 
         function drawChart() {
             const width = canvas.width;
             const height = canvas.height;
-            const padding = 40;
+            const padding = 60; // Increased padding to accommodate labels
             const chartWidth = width - padding * 2;
             const chartHeight = height - padding * 2;
+            
+            // Store chart bounds for interaction
+            chartBounds = {
+                padding,
+                chartWidth,
+                chartHeight,
+                width,
+                height
+            };
 
             // Use requestAnimationFrame for smooth rendering
             requestAnimationFrame(() => {
@@ -326,7 +423,7 @@
                 ctx.fillRect(0, 0, width, height);
 
                 // Draw grid lines
-                ctx.strokeStyle = '#1a1a1a';
+                ctx.strokeStyle = '#333';
                 ctx.lineWidth = 1;
                 for (let i = 0; i <= 5; i++) {
                     const y = padding + (chartHeight / 5) * i;
@@ -337,8 +434,8 @@
                 }
 
                 // Draw line
-                ctx.strokeStyle = '#fff';
-                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#888';
+                ctx.lineWidth = 3;
                 ctx.beginPath();
 
                 values.forEach((value, index) => {
@@ -355,20 +452,39 @@
                 ctx.stroke();
 
                 // Draw points
-                ctx.fillStyle = '#fff';
                 values.forEach((value, index) => {
                     const x = padding + (chartWidth / (values.length - 1)) * index;
                     const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
                     
-                    ctx.beginPath();
-                    ctx.arc(x, y, 4, 0, Math.PI * 2);
-                    ctx.fill();
+                    // Highlight hovered point
+                    if (index === hoveredPoint) {
+                        ctx.fillStyle = '#fff';
+                        ctx.beginPath();
+                        ctx.arc(x, y, 8, 0, Math.PI * 2);
+                        ctx.fill();
+                        
+                        ctx.fillStyle = '#4ade80';
+                        ctx.beginPath();
+                        ctx.arc(x, y, 6, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        ctx.fillStyle = '#4ade80';
+                        ctx.beginPath();
+                        ctx.arc(x, y, 6, 0, Math.PI * 2);
+                        ctx.fill();
+                        
+                        // Add white border to points
+                        ctx.strokeStyle = '#fff';
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                    }
                 });
 
                 // Draw labels
-                ctx.fillStyle = '#888';
-                ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+                ctx.fillStyle = '#fff';
+                ctx.font = 'bold 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
                 ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
 
                 dates.forEach((date, index) => {
                     const x = padding + (chartWidth / (values.length - 1)) * index;
@@ -376,11 +492,14 @@
                 });
 
                 // Draw value labels
+                ctx.fillStyle = '#fff';
+                ctx.font = 'bold 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
                 ctx.textAlign = 'right';
+                ctx.textBaseline = 'middle';
                 for (let i = 0; i <= 5; i++) {
                     const value = minValue + (valueRange / 5) * (5 - i);
                     const y = padding + (chartHeight / 5) * i;
-                    ctx.fillText('$' + Math.round(value).toLocaleString(), padding - 10, y + 5);
+                    ctx.fillText('$' + Math.round(value).toLocaleString(), padding - 5, y);
                 }
                 
                 // Hide loading overlay after chart is drawn
@@ -410,6 +529,84 @@
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(resizeCanvas, 100);
         }
+
+        // Mouse interaction functions
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        function findNearestPoint(mouseX, mouseY) {
+            const { padding, chartWidth, chartHeight } = chartBounds;
+            const pointRadius = 15; // Clickable area around each point
+            
+            for (let i = 0; i < values.length; i++) {
+                const x = padding + (chartWidth / (values.length - 1)) * i;
+                const y = padding + chartHeight - ((values[i] - minValue) / valueRange) * chartHeight;
+                
+                const distance = Math.sqrt((mouseX - x) ** 2 + (mouseY - y) ** 2);
+                if (distance <= pointRadius) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        function showTooltip(pointIndex, mouseX, mouseY) {
+            if (pointIndex >= 0 && pointIndex < values.length) {
+                const date = dates[pointIndex];
+                const value = values[pointIndex];
+                tooltip.innerHTML = `${date}<br><strong>$${value.toLocaleString()}</strong>`;
+                tooltip.style.display = 'block';
+                
+                // Position tooltip above the cursor
+                const rect = canvas.getBoundingClientRect();
+                const containerRect = canvas.parentElement.getBoundingClientRect();
+                
+                // Center tooltip above cursor
+                let tooltipX = mouseX + rect.left - containerRect.left;
+                let tooltipY = mouseY + rect.top - containerRect.top - 50;
+                
+                // Keep tooltip within container bounds
+                const tooltipWidth = 80; // Approximate tooltip width
+                if (tooltipX < tooltipWidth / 2) tooltipX = tooltipWidth / 2;
+                if (tooltipX > containerRect.width - tooltipWidth / 2) tooltipX = containerRect.width - tooltipWidth / 2;
+                if (tooltipY < 10) tooltipY = mouseY + rect.top - containerRect.top + 20;
+                
+                tooltip.style.left = (tooltipX - tooltipWidth / 2) + 'px';
+                tooltip.style.top = tooltipY + 'px';
+            }
+        }
+
+        function hideTooltip() {
+            tooltip.style.display = 'none';
+        }
+
+        // Event listeners for interaction
+        canvas.addEventListener('mousemove', (e) => {
+            const mousePos = getMousePos(e);
+            const nearestPoint = findNearestPoint(mousePos.x, mousePos.y);
+            
+            if (nearestPoint !== hoveredPoint) {
+                hoveredPoint = nearestPoint;
+                drawChart(); // Redraw to show highlight
+            }
+            
+            if (nearestPoint >= 0) {
+                showTooltip(nearestPoint, mousePos.x, mousePos.y);
+            } else {
+                hideTooltip();
+            }
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            hoveredPoint = -1;
+            hideTooltip();
+            drawChart(); // Redraw to remove highlight
+        });
 
         window.addEventListener('resize', debouncedResize);
         
