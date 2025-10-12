@@ -96,6 +96,40 @@
             padding: 30px;
             margin-bottom: 60px;
             border: 1px solid #222;
+            position: relative;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #333;
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         canvas {
@@ -183,14 +217,13 @@
                 <div class="stat-label">Active Positions</div>
                 <div class="stat-value">6</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">Win Rate</div>
-                <div class="stat-value">67%</div>
-            </div>
         </div>
 
         <h2 class="section-title">Portfolio Growth (Last 8 Weeks)</h2>
         <div class="chart-container">
+            <div class="loading-overlay" id="chartLoading">
+                <div class="loading-spinner"></div>
+            </div>
             <canvas id="portfolioChart"></canvas>
         </div>
 
@@ -266,6 +299,17 @@
 
         const canvas = document.getElementById('portfolioChart');
         const ctx = canvas.getContext('2d');
+        const loadingOverlay = document.getElementById('chartLoading');
+
+        // Performance optimizations
+        let resizeTimeout;
+        let lastWidth = 0;
+        let lastHeight = 0;
+        
+        // Pre-calculate values that don't change
+        const minValue = Math.min(...values);
+        const maxValue = Math.max(...values);
+        const valueRange = maxValue - minValue;
 
         function drawChart() {
             const width = canvas.width;
@@ -274,83 +318,105 @@
             const chartWidth = width - padding * 2;
             const chartHeight = height - padding * 2;
 
-            // Clear canvas
-            ctx.fillStyle = '#111';
-            ctx.fillRect(0, 0, width, height);
+            // Use requestAnimationFrame for smooth rendering
+            requestAnimationFrame(() => {
+                // Clear canvas efficiently
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = '#111';
+                ctx.fillRect(0, 0, width, height);
 
-            // Find min and max values
-            const minValue = Math.min(...values);
-            const maxValue = Math.max(...values);
-            const valueRange = maxValue - minValue;
-
-            // Draw grid lines
-            ctx.strokeStyle = '#1a1a1a';
-            ctx.lineWidth = 1;
-            for (let i = 0; i <= 5; i++) {
-                const y = padding + (chartHeight / 5) * i;
-                ctx.beginPath();
-                ctx.moveTo(padding, y);
-                ctx.lineTo(width - padding, y);
-                ctx.stroke();
-            }
-
-            // Draw line
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-
-            values.forEach((value, index) => {
-                const x = padding + (chartWidth / (values.length - 1)) * index;
-                const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
-                
-                if (index === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
+                // Draw grid lines
+                ctx.strokeStyle = '#1a1a1a';
+                ctx.lineWidth = 1;
+                for (let i = 0; i <= 5; i++) {
+                    const y = padding + (chartHeight / 5) * i;
+                    ctx.beginPath();
+                    ctx.moveTo(padding, y);
+                    ctx.lineTo(width - padding, y);
+                    ctx.stroke();
                 }
-            });
 
-            ctx.stroke();
-
-            // Draw points
-            values.forEach((value, index) => {
-                const x = padding + (chartWidth / (values.length - 1)) * index;
-                const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
-                
-                ctx.fillStyle = '#fff';
+                // Draw line
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 2;
                 ctx.beginPath();
-                ctx.arc(x, y, 4, 0, Math.PI * 2);
-                ctx.fill();
+
+                values.forEach((value, index) => {
+                    const x = padding + (chartWidth / (values.length - 1)) * index;
+                    const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
+                    
+                    if (index === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                });
+
+                ctx.stroke();
+
+                // Draw points
+                ctx.fillStyle = '#fff';
+                values.forEach((value, index) => {
+                    const x = padding + (chartWidth / (values.length - 1)) * index;
+                    const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
+                    
+                    ctx.beginPath();
+                    ctx.arc(x, y, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Draw labels
+                ctx.fillStyle = '#888';
+                ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
+                ctx.textAlign = 'center';
+
+                dates.forEach((date, index) => {
+                    const x = padding + (chartWidth / (values.length - 1)) * index;
+                    ctx.fillText(date, x, height - 10);
+                });
+
+                // Draw value labels
+                ctx.textAlign = 'right';
+                for (let i = 0; i <= 5; i++) {
+                    const value = minValue + (valueRange / 5) * (5 - i);
+                    const y = padding + (chartHeight / 5) * i;
+                    ctx.fillText('$' + Math.round(value).toLocaleString(), padding - 10, y + 5);
+                }
+                
+                // Hide loading overlay after chart is drawn
+                setTimeout(() => {
+                    loadingOverlay.classList.add('hidden');
+                }, 300);
             });
-
-            // Draw labels
-            ctx.fillStyle = '#888';
-            ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-            ctx.textAlign = 'center';
-
-            dates.forEach((date, index) => {
-                const x = padding + (chartWidth / (values.length - 1)) * index;
-                ctx.fillText(date, x, height - 10);
-            });
-
-            // Draw value labels
-            ctx.textAlign = 'right';
-            for (let i = 0; i <= 5; i++) {
-                const value = minValue + (valueRange / 5) * (5 - i);
-                const y = padding + (chartHeight / 5) * i;
-                ctx.fillText('$' + Math.round(value).toLocaleString(), padding - 10, y + 5);
-            }
         }
 
         function resizeCanvas() {
             const container = canvas.parentElement;
-            canvas.width = container.offsetWidth - 60;
-            canvas.height = 300;
-            drawChart();
+            const newWidth = container.offsetWidth - 60;
+            const newHeight = 300;
+            
+            // Only resize if dimensions actually changed
+            if (newWidth !== lastWidth || newHeight !== lastHeight) {
+                canvas.width = newWidth;
+                canvas.height = newHeight;
+                lastWidth = newWidth;
+                lastHeight = newHeight;
+                drawChart();
+            }
         }
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        // Debounced resize handler
+        function debouncedResize() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(resizeCanvas, 100);
+        }
+
+        window.addEventListener('resize', debouncedResize);
+        
+        // Initial load with slight delay to ensure DOM is ready
+        setTimeout(() => {
+            resizeCanvas();
+        }, 10);
     </script>
 </body>
 </html>
