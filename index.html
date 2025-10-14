@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trading Portfolio - Andrew Wang</title>
+    <title>Andrew's Trading Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -16,7 +16,67 @@
             background: #000;
             color: #fff;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
+
+        .tab-navigation {
+            display: flex;
+            background: #111;
+            border-bottom: 1px solid #222;
+            padding: 0 20px;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            color: #888;
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-button.active {
+            color: #4ade80;
+            border-bottom-color: #4ade80;
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tab-content.fade-in {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
 
         .container {
             max-width: 1200px;
@@ -152,16 +212,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
-        }
 
         .trades-table {
             width: 100%;
@@ -266,10 +316,18 @@
 <body>
     <div class="container">
         <header>
-            <h1>Trading Portfolio</h1>
+            <h1>Andrew's Trading Portfolio</h1>
             <p class="subtitle">Stock Trading History & Performance</p>
+            <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">As of October 10th, 2025</p>
+            
+            <div class="tab-navigation" style="justify-content: center; margin-top: 30px;">
+                <button class="tab-button active" onclick="showTab('portfolio')">Portfolio Overview</button>
+                <button class="tab-button" onclick="showTab('blog')">Trading Blog</button>
+                <button class="tab-button" onclick="showTab('strategies')">Strategies</button>
+            </div>
         </header>
 
+        <div id="portfolio-tab" class="tab-content active">
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Current Portfolio</div>
@@ -345,13 +403,49 @@
             </thead>
             <tbody>
                 <tr>
+                    <td class="stock-symbol">UMAC</td>
+                    <td>Sep 19, 2025</td>
+                    <td>Oct 10, 2025</td>
+                    <td>211</td>
+                    <td>$11.50</td>
+                    <td>$13.69</td>
+                    <td class="positive">+$2.19 (+19.0%)</td>
+                </tr>
+                <tr>
+                    <td class="stock-symbol">KTOS</td>
+                    <td>Sep 11, 2025</td>
+                    <td>Oct 10, 2025</td>
+                    <td>32</td>
+                    <td>$67.13</td>
+                    <td>$94.87</td>
+                    <td class="positive">+$27.74 (+41.3%)</td>
+                </tr>
+                <tr>
+                    <td class="stock-symbol">BMNR</td>
+                    <td>Sep 29, 2025</td>
+                    <td>Sep 29, 2025</td>
+                    <td>57</td>
+                    <td>$53.15</td>
+                    <td>$51.63</td>
+                    <td class="negative">-$1.52 (-2.9%)</td>
+                </tr>
+                <tr>
+                    <td class="stock-symbol">BE</td>
+                    <td>Jul 24, 2025</td>
+                    <td>Sep 24, 2025</td>
+                    <td>31</td>
+                    <td>$31.99</td>
+                    <td>$62.69</td>
+                    <td class="positive">+$30.70 (+96.0%)</td>
+                </tr>
+                <tr>
                     <td class="stock-symbol">ASTS</td>
                     <td>Oct 8, 2025</td>
                     <td>Oct 8, 2025</td>
                     <td>11</td>
                     <td>$87.17</td>
                     <td>$84.12</td>
-                    <td class="negative">-$33.55 (-0.54%)</td>
+                    <td class="negative">-$2.05 (-2.4%)</td>
                 </tr>
                 <tr>
                     <td class="stock-symbol">WULF</td>
@@ -360,22 +454,434 @@
                     <td>80</td>
                     <td>$12.03</td>
                     <td>$11.80</td>
-                    <td class="negative">-$18.40 (-0.31%)</td>
+                    <td class="negative">-$0.23 (-1.9%)</td>
                 </tr>
                 <tr>
-                    <td class="stock-symbol">UMAC</td>
-                    <td>Sep 19, 2025</td>
-                    <td>Oct 10, 2025</td>
-                    <td>211</td>
-                    <td>$11.50</td>
-                    <td>$13.69</td>
-                    <td class="positive">+$462.09 (+3.76%)</td>
+                    <td class="stock-symbol">ETHU</td>
+                    <td>Sep 18, 2025</td>
+                    <td>Sep 18, 2025</td>
+                    <td>15</td>
+                    <td>$161.91</td>
+                    <td>$160.45</td>
+                    <td class="negative">-$1.46 (-0.9%)</td>
+                </tr>
+                <tr>
+                    <td class="stock-symbol">RCAT</td>
+                    <td>Sep 11, 2025</td>
+                    <td>Sep 15, 2025</td>
+                    <td>74</td>
+                    <td>$9.91</td>
+                    <td>$10.63</td>
+                    <td class="positive">+$0.72 (+7.3%)</td>
                 </tr>
             </tbody>
         </table>
+
+        </div>
+
+        <div id="blog-tab" class="tab-content">
+            <div class="chart-container">
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 15px; font-weight: 400;">Recent Trading Journal Entries</h3>
+                    <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                        Personal insights, strategies, and reflections on trading performance and market conditions.
+                    </p>
+                </div>
+                
+                <!-- Blog Post 1 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-1.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Starting Real Money Trading</h4>
+                        <span style="color: #888; font-size: 0.85rem;">October 10, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        The last few weeks have been hectic with college applications, so I have not had much time to study the markets or track every setup like I usually do. Even though I have been busy, I have still managed to trade and make decisions when opportunities appeared...
+                    </p>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-2.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Slow Progress and Patience</h4>
+                        <span style="color: #888; font-size: 0.85rem;">September 23, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        It has been a while since I last checked in, but my positions have been slowly grinding up, and I am starting to see real progress again. I have learned that the key to making money is not constant trading, but giving my positions time to work...
+                    </p>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-3.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Getting Better at Trading</h4>
+                        <span style="color: #888; font-size: 0.85rem;">September 10, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        Lately, I feel like I am slowly starting to get it. My patience has improved, and I am learning to size into larger positions on the stocks that truly lead the market. The momentum names are where the real money is made...
+                    </p>
+                </div>
+
+                <!-- Blog Post 4 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-4.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Patience and Discipline</h4>
+                        <span style="color: #888; font-size: 0.85rem;">August 28, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        My portfolio has been sitting around the same level lately, but that is not necessarily a bad thing. For the first time, I feel like I am becoming more patient and deliberate with every trade I take...
+                    </p>
+                </div>
+
+                <!-- Blog Post 5 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-5.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Rough Trading Day</h4>
+                        <span style="color: #888; font-size: 0.85rem;">August 12, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        Today was rough. My account is sitting around $8.6K, and I keep losing again and again. I tell myself to slow down and take only the best setups, but when the market opens, I lose patience and start forcing trades...
+                    </p>
+                </div>
+                <!-- Blog Post 6 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-6.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Locked In and Focused</h4>
+                        <span style="color: #888; font-size: 0.85rem;">July 27, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        Hey guys, long time no see. I have been locked in for the last couple of days and am finally experiencing smaller wins. The account is sitting around 9.2K, with most of my positions where I can't lose any more money...
+                    </p>
+                </div>
+
+                <!-- Blog Post 7 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-7.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Motivated to Improve</h4>
+                        <span style="color: #888; font-size: 0.85rem;">July 16, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        Recently, I have become much more motivated to make smarter and better trades. I keep overtrading, taking on too much risk, letting emotions control me, and not trusting my analysis...
+                    </p>
+                </div>
+
+                <!-- Blog Post 8 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-8.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Learning from Mistakes</h4>
+                        <span style="color: #888; font-size: 0.85rem;">July 11, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        I have not written much in this journal lately. The last few days have been alright, and overall, my account has been moving up, peaking around $9.25k, which I am satisfied with...
+                    </p>
+                </div>
+
+                <!-- Blog Post 9 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-9.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Forced Trades and Lessons</h4>
+                        <span style="color: #888; font-size: 0.85rem;">July 1, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        It is pretty late, and I am writing, but I finally reviewed my trades today, and they were all poor and completely forced. Everything in these markets looked weak, and there were no optimal setups to take...
+                    </p>
+                </div>
+
+                <!-- Blog Post 10 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-10.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Trusting Stop Losses</h4>
+                        <span style="color: #888; font-size: 0.85rem;">June 30, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        Recently, my trades have been alright. All the positions I took were technically sound and had a decent conviction; however, they lacked significant momentum behind them...
+                    </p>
+                </div>
+
+                <!-- Blog Post 11 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-11.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Frustration and FOMO</h4>
+                        <span style="color: #888; font-size: 0.85rem;">June 24, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        I feel frustrated with trading. I feel like I took a trade, and I just chopped around, and prices don't move once I enter. It's a mix of my fault along with unlucky price action...
+                    </p>
+                </div>
+
+                <!-- Blog Post 12 -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='blog-post-12.html'" onmouseover="this.style.borderColor='#4ade80'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#222'; this.style.transform='translateY(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: #4ade80; font-size: 1.1rem; margin: 0;">Starting Real Money Trading</h4>
+                        <span style="color: #888; font-size: 0.85rem;">June 12, 2025</span>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; margin: 0;">
+                        Today I decided to start using real money in the markets. After six months of paper trading, I've finally seen consistent progress. The simulated gains gave me structure and confidence...
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="strategies-tab" class="tab-content">
+            <div class="chart-container">
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 15px; font-weight: 400;">Trading Strategies & Setups</h3>
+                    <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                        Core strategies and setups I use for identifying high-probability trading opportunities.
+                    </p>
+                </div>
+
+                <!-- Personal Trading Journey -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 25px; margin-bottom: 25px;">
+                    <h4 style="color: #4ade80; font-size: 1.3rem; margin-bottom: 15px;">My Trading Evolution</h4>
+                    <div style="color: #ccc; line-height: 1.6;">
+                        <p style="margin-bottom: 15px;">Throughout my trading journey, I've experimented with various approaches and techniques. Initially, I focused heavily on trendlines, support and resistance levels, and traditional technical analysis patterns. While these methods provided a solid foundation, I found myself struggling with consistency and often getting caught in false breakouts or whipsaws. The market seemed to move against me more often than not, and I realized I needed a more systematic approach.</p>
+                        
+                        <p style="margin-bottom: 15px;">That's when I discovered Quallamaggie's methodology and everything changed. His approach to identifying high-probability setups, combined with proper risk management and position sizing, transformed my trading from sporadic wins to consistent, profitable trades. The key difference was learning to wait for the market to come to me rather than chasing every potential setup. Now I follow his proven strategies, which focus on momentum leaders, clean consolidations, and institutional-quality breakouts that have been refined through extensive backtesting and real-world application.</p>
+                    </div>
+                </div>
+
+                <!-- Standard Breakout Strategy -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 25px; margin-bottom: 25px;">
+                    <h4 style="color: #4ade80; font-size: 1.3rem; margin-bottom: 15px;">Standard Breakout Strategy</h4>
+                    <div style="color: #ccc; line-height: 1.6;">
+                        <p style="margin-bottom: 15px;"><strong style="color: #fff;">Definition:</strong> A breakout occurs when a stock price moves above a key resistance level with increased volume, signaling potential continuation of the upward trend. As Quallamaggie defines it: "A breakout is when a stock breaks above a previous high or resistance level with volume, creating a new higher high and establishing a new uptrend. The key is clean consolidation before the breakout - the tighter the base, the better the breakout."</p>
+                        
+                        <p style="margin-bottom: 15px;"><strong style="color: #fff;">Key Components:</strong></p>
+                        <ul style="margin-left: 20px; margin-bottom: 15px;">
+                            <li style="margin-bottom: 8px;">Price breaks above a clear resistance level (previous highs, trend lines, or consolidation patterns)</li>
+                            <li style="margin-bottom: 8px;">Volume increases significantly (at least 150% of average daily volume)</li>
+                            <li style="margin-bottom: 8px;">Clean consolidation pattern before the breakout</li>
+                            <li style="margin-bottom: 8px;">Strong relative strength compared to the market</li>
+                        </ul>
+
+                        <p style="margin-bottom: 15px;"><strong style="color: #fff;">Entry Criteria:</strong></p>
+                        <ul style="margin-left: 20px; margin-bottom: 15px;">
+                            <li style="margin-bottom: 8px;">Enter on the breakout candle or retest of the breakout level</li>
+                            <li style="margin-bottom: 8px;">Stop loss at low of day or 1.5 ADR below entry</li>
+                            <li style="margin-bottom: 8px;">Target: Until a close under the 10 EMA</li>
+                        </ul>
+
+                        <p style="margin-bottom: 15px;"><strong style="color: #fff;">Example Stocks:</strong></p>
+                        <div style="margin-left: 20px;">
+                            <div style="margin-bottom: 12px;">
+                                <strong style="color: #4ade80;">HOOD (5/8/25):</strong> <span style="color: #ccc;">Robinhood breakout after earnings beat, clean consolidation pattern with volume confirmation</span>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <strong style="color: #4ade80;">RKLB (6/20/25):</strong> <span style="color: #ccc;">Rocket Lab breakout on space sector momentum, strong relative strength vs market</span>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <strong style="color: #4ade80;">BE (8/12/25):</strong> <span style="color: #ccc;">Bloom Energy breakout on clean energy sector rotation, volume spike on breakout day</span>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <strong style="color: #4ade80;">RGTI (9/12/25):</strong> <span style="color: #ccc;">Rigetti Computing breakout on quantum computing hype, clean base formation before move</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episodic Pivot Strategy -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 25px; margin-bottom: 25px;">
+                    <h4 style="color: #4ade80; font-size: 1.3rem; margin-bottom: 15px;">Episodic Pivot Strategy</h4>
+                    <div style="color: #ccc; line-height: 1.6;">
+                        <p style="margin-bottom: 15px;"><strong style="color: #fff;">Definition:</strong> An episodic pivot is a reversal pattern that occurs after a significant move, where the stock finds support and begins a new upward trend. Popularized by Quallamaggie, this strategy focuses on catching the early stages of new momentum moves.</p>
+                        
+                        <p style="margin-bottom: 15px;"><strong style="color: #fff;">Key Components:</strong></p>
+                        <ul style="margin-left: 20px; margin-bottom: 15px;">
+                            <li style="margin-bottom: 8px;">Stock has had a significant move down or sideways consolidation</li>
+                            <li style="margin-bottom: 8px;">Volume dries up near the lows, indicating selling exhaustion</li>
+                            <li style="margin-bottom: 8px;">Price begins to stabilize and form higher lows</li>
+                            <li style="margin-bottom: 8px;">Volume increases on the first significant up day</li>
+                            <li style="margin-bottom: 8px;">Stock shows relative strength vs. market</li>
+                        </ul>
+
+                        <p style="margin-bottom: 15px;"><strong style="color: #fff;">Entry Criteria:</strong></p>
+                        <ul style="margin-left: 20px; margin-bottom: 15px;">
+                            <li style="margin-bottom: 8px;">Enter on the first strong volume day after the pivot</li>
+                            <li style="margin-bottom: 8px;">Stop loss below the pivot low or recent swing low</li>
+                            <li style="margin-bottom: 8px;">Target: Previous resistance levels or 2-3x risk</li>
+                        </ul>
+
+                        <p style="margin-bottom: 15px;"><strong style="color: #fff;">Example Patterns:</strong></p>
+                        <div style="margin-left: 20px;">
+                            <div style="margin-bottom: 12px;">
+                                <strong style="color: #4ade80;">BE (7/24/25):</strong> <span style="color: #ccc;">Bloom Energy episodic pivot after earnings selloff, found support and began new uptrend</span>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <strong style="color: #4ade80;">PGEN (8/15/25):</strong> <span style="color: #ccc;">Precigen pivot on biotech sector recovery, volume dried up then increased on reversal</span>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <strong style="color: #4ade80;">PL (9/18/25):</strong> <span style="color: #ccc;">Planet Labs episodic pivot after space sector correction, clean reversal pattern</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learn More Section -->
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 25px; margin-bottom: 25px;">
+                    <h4 style="color: #4ade80; font-size: 1.3rem; margin-bottom: 15px;">Want to Learn More?</h4>
+                    <div style="color: #ccc; line-height: 1.6;">
+                        <p style="margin-bottom: 15px;">These strategies are based on proven market patterns and have been refined through extensive backtesting and real-world application. For deeper insights, detailed examples, and advanced techniques, I highly recommend exploring Quallamaggie's educational content.</p>
+                        
+                        <div style="text-align: center; padding: 20px;">
+                            <a href="https://qullamaggie.com" target="_blank" style="
+                                display: inline-block;
+                                background: linear-gradient(135deg, #4ade80, #22c55e);
+                                color: #000;
+                                padding: 15px 30px;
+                                border-radius: 8px;
+                                text-decoration: none;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                transition: all 0.3s ease;
+                                box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+                            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(74, 222, 128, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(74, 222, 128, 0.3)'">
+                                Visit Quallamaggie's Website →
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #888; text-align: center;">
+                            Learn advanced trading strategies, market analysis, and professional trading techniques
+                        </p>
+                    </div>
+                </div>
+            </div>
     </div>
 
     <script>
+        // Tab switching functionality with smooth animations
+        function showTab(tabName) {
+            // Clear hash immediately when manually switching tabs
+            if (window.location.hash) {
+                window.history.replaceState(null, null, window.location.pathname);
+            }
+            
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active', 'fade-in');
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Show selected tab content with single animation
+            setTimeout(() => {
+                const targetTab = document.getElementById(tabName + '-tab');
+                if (targetTab) {
+                    targetTab.classList.add('active', 'fade-in');
+                }
+            }, 50);
+        }
+
+        // Handle hash navigation for blog posts
+        function handleHashNavigation() {
+            const hash = window.location.hash;
+            if (hash === '#blog-tab') {
+                // Ensure DOM is ready before switching tabs
+                setTimeout(() => {
+                    // Remove active from all tabs first
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => {
+                        content.classList.remove('active', 'fade-in');
+                    });
+                    
+                    // Remove active from all buttons
+                    const tabButtons = document.querySelectorAll('.tab-button');
+                    tabButtons.forEach(button => {
+                        button.classList.remove('active');
+                    });
+                    
+                    // Add active to blog tab and button
+                    const blogTab = document.getElementById('blog-tab');
+                    const blogButton = document.querySelector('button[onclick="showTab(\'blog\')"]');
+                    
+                    if (blogTab && blogButton) {
+                        blogTab.classList.add('active', 'fade-in');
+                        blogButton.classList.add('active');
+                    }
+                }, 50); // Reduced delay for faster switching
+            }
+        }
+
+        // Check hash on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Always start with portfolio overview as default
+            const portfolioTab = document.getElementById('portfolio-tab');
+            const portfolioButton = document.querySelector('button[onclick="showTab(\'portfolio\')"]');
+            
+            if (portfolioTab && portfolioButton) {
+                // Ensure portfolio tab is active
+                portfolioTab.classList.add('active', 'fade-in');
+                portfolioButton.classList.add('active');
+                
+                // Remove active from other tabs
+                const otherTabs = document.querySelectorAll('.tab-content:not(#portfolio-tab)');
+                otherTabs.forEach(tab => {
+                    tab.classList.remove('active', 'fade-in');
+                });
+                
+                const otherButtons = document.querySelectorAll('.tab-button:not([onclick="showTab(\'portfolio\')"])');
+                otherButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+            }
+            
+            // Then check if we need to switch to blog tab
+            setTimeout(() => {
+                const hash = window.location.hash;
+                if (hash === '#blog-tab') {
+                    // Switch to blog tab
+                    const blogTab = document.getElementById('blog-tab');
+                    const blogButton = document.querySelector('button[onclick="showTab(\'blog\')"]');
+                    
+                    if (blogTab && blogButton) {
+                        // Remove active from portfolio
+                        portfolioTab.classList.remove('active', 'fade-in');
+                        portfolioButton.classList.remove('active');
+                        
+                        // Add active to blog
+                        blogTab.classList.add('active', 'fade-in');
+                        blogButton.classList.add('active');
+                    }
+                }
+            }, 100);
+        });
+        
+        // Check hash when navigating back
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash;
+            if (hash === '#blog-tab') {
+                // Directly switch to blog tab without delay
+                const blogTab = document.getElementById('blog-tab');
+                const blogButton = document.querySelector('button[onclick="showTab(\'blog\')"]');
+                
+                if (blogTab && blogButton) {
+                    // Remove active from all tabs
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => {
+                        content.classList.remove('active', 'fade-in');
+                    });
+                    
+                    // Remove active from all buttons
+                    const tabButtons = document.querySelectorAll('.tab-button');
+                    tabButtons.forEach(button => {
+                        button.classList.remove('active');
+                    });
+                    
+                    // Add active to blog tab and button
+                    blogTab.classList.add('active', 'fade-in');
+                    blogButton.classList.add('active');
+                }
+            }
+        });
+
         // Portfolio growth data
         const dates = ['Sep 14', 'Sep 18', 'Sep 22', 'Sep 26', 'Sep 30', 'Oct 4', 'Oct 8'];
         const values = [9202, 9511, 10470, 9821, 10263, 10950, 11915];
@@ -391,8 +897,32 @@
         let lastHeight = 0;
         
         // Pre-calculate values that don't change
-        const minValue = Math.min(...values);
-        const maxValue = Math.max(...values);
+        // Calculate nice round numbers for Y-axis
+        const dataMin = Math.min(...values);
+        const dataMax = Math.max(...values);
+        const range = dataMax - dataMin;
+        const padding = range * 0.1; // 10% padding
+        
+        // Round to nice numbers
+        let minValue = Math.floor((dataMin - padding) / 1000) * 1000;
+        let maxValue = Math.ceil((dataMax + padding) / 1000) * 1000;
+        
+        // Ensure we have at least 5 nice intervals
+        const niceRange = maxValue - minValue;
+        const interval = niceRange / 5;
+        
+        // Round interval to nice numbers
+        if (interval <= 200) {
+            minValue = Math.floor(dataMin / 200) * 200;
+            maxValue = Math.ceil(dataMax / 200) * 200;
+        } else if (interval <= 500) {
+            minValue = Math.floor(dataMin / 500) * 500;
+            maxValue = Math.ceil(dataMax / 500) * 500;
+        } else if (interval <= 1000) {
+            minValue = Math.floor(dataMin / 1000) * 1000;
+            maxValue = Math.ceil(dataMax / 1000) * 1000;
+        }
+        
         const valueRange = maxValue - minValue;
         
         // Interactive chart variables
@@ -400,12 +930,13 @@
         let chartBounds = {};
 
         function drawChart() {
-            const width = canvas.width;
-            const height = canvas.height;
+            const devicePixelRatio = window.devicePixelRatio || 1;
+            const width = canvas.width / devicePixelRatio;
+            const height = canvas.height / devicePixelRatio;
             const padding = 60; // Increased padding to accommodate labels
             const chartWidth = width - padding * 2;
             const chartHeight = height - padding * 2;
-            
+
             // Store chart bounds for interaction
             chartBounds = {
                 padding,
@@ -419,86 +950,93 @@
             requestAnimationFrame(() => {
                 // Clear canvas efficiently
                 ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = '#111';
-                ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = '#111';
+            ctx.fillRect(0, 0, width, height);
 
-                // Draw grid lines
+                // Enable anti-aliasing for smoother rendering
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+
+            // Draw grid lines
                 ctx.strokeStyle = '#333';
-                ctx.lineWidth = 1;
-                for (let i = 0; i <= 5; i++) {
-                    const y = padding + (chartHeight / 5) * i;
-                    ctx.beginPath();
-                    ctx.moveTo(padding, y);
-                    ctx.lineTo(width - padding, y);
-                    ctx.stroke();
-                }
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (chartHeight / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(width - padding, y);
+                ctx.stroke();
+            }
 
-                // Draw line
+            // Draw line
                 ctx.strokeStyle = '#888';
                 ctx.lineWidth = 3;
-                ctx.beginPath();
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+            ctx.beginPath();
 
-                values.forEach((value, index) => {
-                    const x = padding + (chartWidth / (values.length - 1)) * index;
-                    const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
-                    
-                    if (index === 0) {
-                        ctx.moveTo(x, y);
-                    } else {
-                        ctx.lineTo(x, y);
-                    }
-                });
+            values.forEach((value, index) => {
+                const x = padding + (chartWidth / (values.length - 1)) * index;
+                const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
 
-                ctx.stroke();
+            ctx.stroke();
 
-                // Draw points
-                values.forEach((value, index) => {
-                    const x = padding + (chartWidth / (values.length - 1)) * index;
-                    const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
-                    
+            // Draw points
+            values.forEach((value, index) => {
+                const x = padding + (chartWidth / (values.length - 1)) * index;
+                const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
+                
                     // Highlight hovered point
                     if (index === hoveredPoint) {
-                        ctx.fillStyle = '#fff';
+                        // Simple green highlight
+                        ctx.fillStyle = '#4ade80';
                         ctx.beginPath();
                         ctx.arc(x, y, 8, 0, Math.PI * 2);
                         ctx.fill();
                         
-                        ctx.fillStyle = '#4ade80';
-                        ctx.beginPath();
-                        ctx.arc(x, y, 6, 0, Math.PI * 2);
-                        ctx.fill();
+                        // Add white border
+                        ctx.strokeStyle = '#fff';
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
                     } else {
-                        ctx.fillStyle = '#4ade80';
-                        ctx.beginPath();
+                        ctx.fillStyle = '#888';
+                ctx.beginPath();
                         ctx.arc(x, y, 6, 0, Math.PI * 2);
-                        ctx.fill();
+                ctx.fill();
                         
                         // Add white border to points
                         ctx.strokeStyle = '#fff';
                         ctx.lineWidth = 2;
                         ctx.stroke();
                     }
-                });
+            });
 
-                // Draw labels
+            // Draw labels
                 ctx.fillStyle = '#fff';
                 ctx.font = 'bold 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-                ctx.textAlign = 'center';
+            ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
 
-                dates.forEach((date, index) => {
-                    const x = padding + (chartWidth / (values.length - 1)) * index;
-                    ctx.fillText(date, x, height - 10);
-                });
+            dates.forEach((date, index) => {
+                const x = padding + (chartWidth / (values.length - 1)) * index;
+                ctx.fillText(date, x, height - 10);
+            });
 
-                // Draw value labels
+            // Draw value labels
                 ctx.fillStyle = '#fff';
                 ctx.font = 'bold 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto';
-                ctx.textAlign = 'right';
+            ctx.textAlign = 'right';
                 ctx.textBaseline = 'middle';
-                for (let i = 0; i <= 5; i++) {
-                    const value = minValue + (valueRange / 5) * (5 - i);
-                    const y = padding + (chartHeight / 5) * i;
+            for (let i = 0; i <= 5; i++) {
+                const value = minValue + (valueRange / 5) * (5 - i);
+                const y = padding + (chartHeight / 5) * i;
                     ctx.fillText('$' + Math.round(value).toLocaleString(), padding - 5, y);
                 }
                 
@@ -516,11 +1054,22 @@
             
             // Only resize if dimensions actually changed
             if (newWidth !== lastWidth || newHeight !== lastHeight) {
-                canvas.width = newWidth;
-                canvas.height = newHeight;
+                // Set high DPI resolution for crisp rendering
+                const devicePixelRatio = window.devicePixelRatio || 1;
+                canvas.width = newWidth * devicePixelRatio;
+                canvas.height = newHeight * devicePixelRatio;
+                
+                // Scale the canvas back down using CSS
+                canvas.style.width = newWidth + 'px';
+                canvas.style.height = newHeight + 'px';
+                
+                // Scale the drawing context so everything draws at the correct size
+                ctx.scale(devicePixelRatio, devicePixelRatio);
+                
                 lastWidth = newWidth;
                 lastHeight = newHeight;
-                drawChart();
+                
+            drawChart();
             }
         }
 
@@ -555,29 +1104,46 @@
             return -1;
         }
 
+        // No caching - calculate fresh every time for accuracy
+
         function showTooltip(pointIndex, mouseX, mouseY) {
             if (pointIndex >= 0 && pointIndex < values.length) {
                 const date = dates[pointIndex];
                 const value = values[pointIndex];
                 tooltip.innerHTML = `${date}<br><strong>$${value.toLocaleString()}</strong>`;
+                
+                // Make tooltip visible first to get accurate dimensions
                 tooltip.style.display = 'block';
+                tooltip.style.visibility = 'hidden';
                 
-                // Position tooltip above the cursor
-                const rect = canvas.getBoundingClientRect();
-                const containerRect = canvas.parentElement.getBoundingClientRect();
+                // Force layout calculation
+                const tooltipRect = tooltip.getBoundingClientRect();
+                const tooltipWidth = tooltipRect.width;
+                const tooltipHeight = tooltipRect.height;
                 
-                // Center tooltip above cursor
-                let tooltipX = mouseX + rect.left - containerRect.left;
-                let tooltipY = mouseY + rect.top - containerRect.top - 50;
+                // Always calculate position fresh (no caching)
+                // Use EXACT same logic as drawChart
+                const devicePixelRatio = window.devicePixelRatio || 1;
+                const width = canvas.width / devicePixelRatio;
+                const height = canvas.height / devicePixelRatio;
+                const padding = 60;
+                const chartWidth = width - padding * 2;
+                const chartHeight = height - padding * 2;
                 
-                // Keep tooltip within container bounds
-                const tooltipWidth = 80; // Approximate tooltip width
-                if (tooltipX < tooltipWidth / 2) tooltipX = tooltipWidth / 2;
-                if (tooltipX > containerRect.width - tooltipWidth / 2) tooltipX = containerRect.width - tooltipWidth / 2;
-                if (tooltipY < 10) tooltipY = mouseY + rect.top - containerRect.top + 20;
+                // Calculate data point position - EXACT same as drawChart
+                const x = padding + (chartWidth / (values.length - 1)) * pointIndex;
+                const y = padding + chartHeight - ((value - minValue) / valueRange) * chartHeight;
                 
-                tooltip.style.left = (tooltipX - tooltipWidth / 2) + 'px';
+                // Position tooltip directly above each dot - fine-tuned centering
+                const tooltipX = x - (tooltipWidth / 2) + 28; // Centered with 28px right adjustment (was +8, now +28 = +20px more right)
+                const tooltipY = y - tooltipHeight + 13; // 13px above the dot (was +3, now +13 = +10px more down)
+                
+                // Apply position immediately
+                tooltip.style.left = tooltipX + 'px';
                 tooltip.style.top = tooltipY + 'px';
+                
+                // Make tooltip visible
+                tooltip.style.visibility = 'visible';
             }
         }
 
@@ -612,7 +1178,7 @@
         
         // Initial load with slight delay to ensure DOM is ready
         setTimeout(() => {
-            resizeCanvas();
+        resizeCanvas();
         }, 10);
     </script>
 </body>

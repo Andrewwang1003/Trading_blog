@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Blog - Andrew's Trading Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            color: #4ade80;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #22c55e;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #222;
+        }
+
+        .blog-container {
+            background: #111;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid #222;
+            border-radius: 8px;
+        }
+
+        .blog-post {
+            background: #0a0a0a;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            transition: border-color 0.3s;
+        }
+
+        .blog-post:hover {
+            border-color: #444;
+        }
+
+        .blog-post:last-child {
+            margin-bottom: 0;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .post-title {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .post-date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .post-content {
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #333;
+            color: #888;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        .load-more-btn {
+            background: #333;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: background 0.2s;
+            display: block;
+            margin: 40px auto 0;
+        }
+
+        .load-more-btn:hover {
+            background: #444;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+
+        .empty-state h3 {
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            .blog-container {
+                padding: 20px;
+            }
+
+            .blog-post {
+                padding: 20px;
+            }
+
+            .post-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Trading Blog</h1>
+            <p class="subtitle">Insights, Strategies & Market Analysis</p>
+            <a href="index.html" class="nav-link">← Back to Portfolio</a>
+        </header>
+
+        <div class="blog-container">
+            <h2 class="section-title">Recent Posts</h2>
+            
+            <!-- Blog posts -->
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Protecting Capital in Uncertain Times</h3>
+                        <span class="post-date">October 10, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    The last few weeks have been hectic with college applications, so I have not had much time to study the markets or track every setup like I usually do. Even though I have been busy, I have still managed to trade and make decisions when opportunities appeared. My understanding of market structure and timing has improved, and I feel more confident in my ability to act decisively when needed.<br><br>
+                    Today, I decided to sell several of my positions after hearing news about Trump threatening tariffs, which caused some uncertainty across the market. Rather than risk giving back profits, I closed positions like UMAC, KTOS, and NUGT, all of which had been strong contributors to my account's recent growth. This was a tough call because these names had been performing well, but I am learning that protecting capital is just as important as growing it.<br><br>
+                    My account is currently around $12K, which puts me roughly 20% above the market, and that feels like a major milestone. It is proof that the work I have been putting in is paying off. I can see now that mastering my emotions is the final piece of the puzzle. When I trade calmly, I make smarter decisions. I know I still have a long way to go, but moments like this remind me that I can make trading work for me if I keep building discipline, staying patient, and continuing to grow step by step.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Capital Protection</span>
+                    <span class="tag">Market Uncertainty</span>
+                    <span class="tag">Milestone</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Slow Grind Back to Break-Even</h3>
+                        <span class="post-date">September 23, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    It has been a while since I last checked in, but my positions have been slowly grinding up, and I am starting to see real progress again. I have learned that the key to making money is not constant trading, but giving my positions time to work. The longer I hold quality setups, the more clearly I can see how patience pays off. I used to think that trading more meant improving faster, but now I understand that taking fewer, higher-quality trades is what really moves the needle.<br><br>
+                    I am almost back to break-even and feeling more comfortable in the markets than I have in a long time. I am beginning to take on slightly more risk when the opportunity is right, but it feels controlled and calculated rather than impulsive. Positions like BE, NUGT, TEM, and KTOS have been carrying my account, each one slowly pushing my portfolio higher.<br><br>
+                    All side projects, including the superperformance analysis, are paused for now as college applications take priority. Even with everything going on, I still feel focused on trading and confident that I am finally building the habits that will carry me long-term. Slow progress is still progress, and I am learning to trust that.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Break-Even</span>
+                    <span class="tag">Quality Trades</span>
+                    <span class="tag">College</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Momentum Leaders and Bigger Positions</h3>
+                        <span class="post-date">September 10, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    Lately, I feel like I am slowly starting to get it. My patience has improved, and I am learning to size into larger positions on the stocks that truly lead the market. The momentum names are where the real money is made, and I am beginning to understand how to identify and commit to them with confidence. NUGT and BE have been my bigger winners recently, both showing clean strength and steady follow-through.<br><br>
+                    I have been focusing on patience more than ever. Instead of jumping into trades too early, I am letting my positions slowly grind up, giving them the time and space they need to develop. That change in mindset has made a huge difference. I am no longer rushing into mediocre setups just to feel active. I have also started paying much more attention to my entries, waiting for the perfect moment instead of settling for a setup that looks "good enough."<br><br>
+                    Each day, I feel a little closer to understanding what consistent success requires. The key is patience, precision, and the willingness to sit tight when others panic. I am starting to trust that process.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Momentum Leaders</span>
+                    <span class="tag">Position Sizing</span>
+                    <span class="tag">Patience</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Learning Patience Through BE</h3>
+                        <span class="post-date">August 28, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    My portfolio has been sitting around the same level lately, but that is not necessarily a bad thing. For the first time, I feel like I am becoming more patient and deliberate with every trade I take. I have been trading less, but the trades I do take have been stronger and better thought out. BE has been carrying my portfolio and keeping it steady, helping me stay above water despite a few small losses here and there.<br><br>
+                    I am learning that patience truly pays off. Instead of chasing every breakout or reacting to every move, I am starting to recognize when to sit still and let the market come to me. That restraint has been difficult, but it is what separates random trading from consistent execution. If I can continue to stay calm and disciplined, I know my results will follow.<br><br>
+                    I feel like I am slowly starting to understand what makes a good trader. It is not about constant action but about consistent focus. I just need to keep this mindset, stay patient, and let discipline become second nature. That is how I will grow; not through luck or emotion, but through persistence and control.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Patience</span>
+                    <span class="tag">BE Trade</span>
+                    <span class="tag">Discipline</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Account Decline and Self-Reflection</h3>
+                        <span class="post-date">August 12, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    Today was rough. My account is sitting around $8.6K, and I keep losing again and again. I tell myself to slow down and take only the best setups, but when the market opens, I lose patience and start forcing trades that are not there. I end up taking weak entries with little conviction, getting stopped out, and then watching the move play out without me.<br><br>
+                    It is frustrating because I know exactly what I am doing wrong. I am overtrading, chasing moves, and letting emotion control my decisions. The losses hurt not just because of the money, but because I know I could have avoided them by following my plan.<br><br>
+                    Still, I am learning. Each mistake is showing me how important patience and selectivity are. Trading well means trading less, focusing only on high-quality setups during the right market conditions. I can feel myself getting a little better at recognizing when not to trade, which is progress in itself. One strong, disciplined trade can make up for many small losses, but I need to earn that discipline first.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Account Decline</span>
+                    <span class="tag">Patience</span>
+                    <span class="tag">Discipline</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Studying Superperformance Patterns</h3>
+                        <span class="post-date">July 27, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    Hey guys, long time no see. I have been locked in for the last couple of days and am finally experiencing smaller wins. The account is sitting around 9.2K, with most of my positions where I can't lose any more money. I have been more disciplined in trying to take fewer extended names, limiting myself to only the strongest setups.<br><br>
+                    I've spoken to many people in the Quallamaggie Discord, and I believe I need to study more setups and take more notes. I want to watch more of Quallamaggie's YouTube videos that discuss how to find the best setups, and I want to focus solely on setups. Even though earning seasons are soon approaching, which means there will be a lot of EPs, I still don't want to take on as much as I haven't mastered and fully understood the setup to its fullest extent.<br><br>
+                    To enhance my understanding of setups, I've determined that I want to go back in time and track the strongest growing stocks in the entire stock market. I want to track the explosive stock growth of the strongest stocks in the stock market. The stock must have an average daily volume of over 200k shares traded daily, and it has to be part of the NYSE or NASDAQ. My friend Agastya will code this using an API and upload the data into a spreadsheet, which I can then use to look back in time and examine the intraday and daily candles for these moves up.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Superperformance</span>
+                    <span class="tag">Research</span>
+                    <span class="tag">Data Analysis</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Focusing on Quality Setups</h3>
+                        <span class="post-date">July 16, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    Recently, I have become much more motivated to make smarter and better trades. I keep overtrading, taking on too much risk, letting emotions control me, and not trusting my analysis. Lately, my trades have been performing better, and I am focusing on taking only the highest-quality setups with stocks that have consistently shown improvement over time.<br><br>
+                    I took positions in RGTI, ARQQ, DFDV, and CRCL, which I considered four-star or higher setups, and all showed solid first-day follow-through. I am hopeful that these positions will continue to perform well, but at this point, all I can do is let the trades play out. I have also been more driven to study and review past setups by reading trading books, exploring blogs, and testing different strategies to deepen my understanding of the markets.<br><br>
+                    I know I could never see myself doing something I do not love. I need to be successful, and this has to work. I may have all my eggs in one basket, but I will make sure those eggs do not break. I will do everything I can to study, observe, analyze, ask questions, and learn from every mistake to achieve success in this competitive field.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Quality Setups</span>
+                    <span class="tag">Research</span>
+                    <span class="tag">Motivation</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Identifying the Overtrading Problem</h3>
+                        <span class="post-date">July 11, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    I have not written much in this journal lately. The last few days have been alright, and overall, my account has been moving up, peaking around $9.25k, which I am satisfied with. I have been trading much less because I have not had the time, and I have also been sick for the last three days. During that time, I conducted more research to identify the main reason behind my recent downturn, and I found that the problem is overtrading.<br><br>
+                    I need to spend more time identifying the strongest and most promising setups. I am referring to momentum leaders that show consistent strength and stability. I need to trade more like Nick, my mentor, instead of following my own impulsive habits. Nick only takes one or two trades a week, while I take two or three a day. I need to be more patient and let my money sit until the right opportunity comes.<br><br>
+                    I keep imagining myself reaching the top and becoming the best trader I can be, yet I still struggle with profitability. To change that, I need to trade less and think more. I should only take the best trades with the best setups, in the strongest sectors, during optimal conditions, and always follow the momentum leaders.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Overtrading</span>
+                    <span class="tag">Patience</span>
+                    <span class="tag">Momentum Leaders</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Forced Trades and Sleep Deprivation</h3>
+                        <span class="post-date">July 1, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    It is pretty late, and I am writing, but I finally reviewed my trades today, and they were all poor and completely forced. Everything in these markets looked weak, and there were no optimal setups to take, but I decided to overtrade again without much thought. I took positions such as LMND, an AI-powered insurance company that showed strong relative strength and had been a leader in this type of play in the past.<br><br>
+                    Next, I took PRCH because Nick, my trading mentor and friend, tagged me to trade it. I entered with a 0.5% risk. This setup was also weak, but since Nick took it, I convinced myself that I should take it too. I ended up getting stopped out. I need to focus on my own conviction and trade the setups I believe in instead of jumping into trades just because others do.<br><br>
+                    I was running on very little sleep, and I took a series of bad positions. There might be a connection there, so I need to make sure I get enough rest before trading. When I am tired, I lose focus and make careless decisions. My account is now at $8.9k, which is under $9k, meaning I will switch back to paper trading for now.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Forced Trades</span>
+                    <span class="tag">Sleep</span>
+                    <span class="tag">Mentorship</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Learning from Technical Setups</h3>
+                        <span class="post-date">June 30, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    Recently, my trades have been alright. All the positions I took were technically sound and had a decent conviction; however, they lacked significant momentum behind them. There is a possibility I'm trying to chase the dream set up, the ones I have been watching and keeping track of. The ones I have been missing and wishing I had gotten into.<br><br>
+                    IONQ, NBIS, RDDT, and MSTR were good trades today. Although there wasn't any strong follow-through on NBIS, it looked promising. The rest had follow-through but stopped me out on the way, or didn't have a picture perfect entry. I think that I should take stuff only based on a 5-minute high to raise my conviction and limit the amount of risk I would be taking.<br><br>
+                    Overall, I realized from this trading day to keep myself in check and trust my stop losses. Ideally, after 7:30, I should be off my computer and minding my own business, and check back into my positions before the market closes. When I spend too much time on my laptop, I tend to overthink and end up doing something I regret.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Technical Analysis</span>
+                    <span class="tag">Stop Losses</span>
+                    <span class="tag">Discipline</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Frustration with Overtrading</h3>
+                        <span class="post-date">June 24, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    I feel frustrated with trading. I feel like I took a trade, and I just chopped around, and prices don't move once I enter. It's a mix of my fault along with unlucky price action. I struggle with FOMO, and I need to pay attention to the best trades and take those instead of jumping at everything I see. I need to examine the stock, research it, determine if it is a leader, assess its potential upside, check its relative strength, and analyze its past price action before making a decision.<br><br>
+                    I feel like when I take a trade, there's always something better, and I wish I had taken that one if I had more conviction. However, I rush into positions and need to think more. Stocks like NBIS, CRCL, OKLO, SMR, and others have been moving up strong, but I end up taking a weaker setup that just chops around. Then I get stopped out the next day for a loss of $50 or $100, and those paper cuts start to hurt after a while.<br><br>
+                    I need to stop being frustrated; my emotions are getting the better of me. I need to relax, follow my rules, and trust my convictions. I need to stop rushing into trades and think carefully before acting. Overtrading and FOMO will be my downfall if I do not control them. I promise I will be profitable by the end of the summer.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">FOMO</span>
+                    <span class="tag">Overtrading</span>
+                    <span class="tag">Emotions</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">Starting Real Money Trading</h3>
+                        <span class="post-date">June 12, 2025</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    Today I decided to start using real money in the markets. After six months of paper trading, I've finally seen consistent progress. The simulated gains gave me structure and confidence, but I began to feel that staying in simulation too long was becoming a crutch. In the past few weeks, I've seen strong setups forming across the market, and my analysis told me it was time to take the next step. I'm done pretending.<br><br>
+                    Through trades with HOOD, APP, and BBAI, I have the skills and trading knowledge to start taking real trades, as I saw clean consolidations after sharp moves with volume drying up near the top of the base. I entered each position near the morning highs, focusing on strength rather than waiting for dips. The setups looked almost textbook. It reminded me of the kind of price structures I had studied for months, straight out of Minervini's playbook.<br><br>
+                    Risk management was my main priority. For each trade, I used a tight stop, keeping potential losses small relative to my account. My goal was not to swing for home runs but to trade in a way that allowed me to survive long enough to learn. Every decision, from position size to stop placement to entry timing, was calculated. I knew that one of these trades could fail, but that did not matter as long as the math worked.<br><br>
+                    When HOOD pushed through its pivot on volume, it confirmed what I had been training myself to recognize: conviction from institutions. APP followed with similar strength, respecting its 10-day line. BBAI, though more volatile, showed promise in its relative volume and post-earnings structure. Watching the candles form in real time with my own capital on the line felt different. There was weight behind every tick.<br><br>
+                    This journal will track those feelings, the mix of logic and emotion, conviction and doubt, as I start this new chapter. I want to see how my thinking evolves, how my edge develops, and where my discipline is tested. Today marks the first page in that record.
+                </div>
+                <div class="post-tags">
+                    <span class="tag">First Real Trade</span>
+                    <span class="tag">Risk Management</span>
+                    <span class="tag">Psychology</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="load-more-btn" onclick="loadMorePosts()">
+            Load More Posts
+        </button>
+    </div>
+
+    <script>
+        // Blog functionality
+        let currentPage = 1;
+        const postsPerPage = 5;
+
+        function loadMorePosts() {
+            // This function will be used to load additional blog posts
+            console.log('Loading more posts...');
+        }
+
+        function addBlogPost(title, date, content, tags) {
+            const blogContainer = document.querySelector('.blog-container');
+            const emptyState = document.querySelector('.empty-state');
+            
+            if (emptyState) {
+                emptyState.remove();
+            }
+
+            const postElement = document.createElement('div');
+            postElement.className = 'blog-post';
+            
+            const tagsHtml = tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+            
+            postElement.innerHTML = `
+                <div class="post-header">
+                    <div>
+                        <h3 class="post-title">${title}</h3>
+                        <span class="post-date">${date}</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    ${content}
+                </div>
+                <div class="post-tags">
+                    ${tagsHtml}
+                </div>
+            `;
+
+            blogContainer.appendChild(postElement);
+        }
+
+        // Example: Add a sample post
+        // addBlogPost(
+        //     "Market Volatility & Position Sizing",
+        //     "Oct 15, 2025",
+        //     "Recent market volatility has reinforced the importance of proper position sizing...",
+        //     ["Risk Management", "Position Sizing", "Volatility"]
+        // );
+    </script>
+</body>
+</html>
