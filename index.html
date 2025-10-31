@@ -318,7 +318,7 @@
         <header>
             <h1>Andrew's Trading Portfolio</h1>
             <p class="subtitle">Stock Trading History & Performance</p>
-            <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">As of October 10th, 2025</p>
+            <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">As of October 30th, 2025</p>
             
             <div class="tab-navigation" style="justify-content: center; margin-top: 30px;">
                 <button class="tab-button active" onclick="showTab('portfolio')">Portfolio Overview</button>
@@ -328,10 +328,13 @@
         </header>
 
         <div id="portfolio-tab" class="tab-content active">
+        <div style="background: #111; border: 1px solid #222; border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; line-height: 1.6; color: #ddd;">
+            Hey, my name is Andrew Wang! I’m a high school senior at Wilcox High School in the Bay Area. I started trading in 2024, experimenting with different styles to find what fit me best. I began with biopharm gambles and speculative plays, moved into futures trading and trend following, and eventually shifted toward a more structured breakout trading approach. Now I focus on clean setups, price action, and disciplined execution—trading less emotionally and more strategically with real cash since mid-2025.
+        </div>
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Current Portfolio</div>
-                <div class="stat-value">$11,910</div>
+                <div class="stat-value">$12,302</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Current Cash</div>
@@ -339,7 +342,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total Return</div>
-                <div class="stat-value positive">19.1%</div>
+                <div class="stat-value positive">+21.9%</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Active Positions</div>
@@ -645,6 +648,11 @@
                     <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
                         Core strategies and setups I use for identifying high-probability trading opportunities.
                     </p>
+                    <div style="text-align: center; margin: 20px 0 10px;">
+                        <button onclick="openReposModal()" class="tab-button" style="padding: 10px 16px; font-size: 0.95rem;">
+                            View GitHub Repos
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Personal Trading Journey -->
@@ -762,6 +770,36 @@
                     </div>
                 </div>
             </div>
+    </div>
+
+    <!-- Repos Modal -->
+    <div id="reposModal" style="display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 50;">
+        <div style="background: #0b0b0b; border: 1px solid #222; border-radius: 10px; width: 92%; max-width: 700px; margin: 8% auto; padding: 22px; color: #ddd; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <h3 style="color: #fff; font-size: 1.2rem; margin: 0; font-weight: 500;">GitHub Repositories</h3>
+                <button onclick="closeReposModal()" style="background: transparent; border: 1px solid #333; color: #aaa; padding: 6px 10px; border-radius: 6px; cursor: pointer;">Close</button>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 14px;">
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                        <h4 style="color: #4ade80; margin: 0 0 8px; font-size: 1.05rem;">
+                            <a href="https://github.com/agastyak1/superPerformanceScreener" target="_blank" style="color: #4ade80; text-decoration: none;">SuperPerformanceScreener</a>
+                        </h4>
+                        <a href="https://github.com/agastyak1/superPerformanceScreener" target="_blank" style="color: #999; font-size: 0.9rem; text-decoration: none;">View on GitHub →</a>
+                    </div>
+                    <p style="color: #bbb; margin: 0; line-height: 1.6;">Custom filter I use to surface potential leaders near breakouts. Focus: liquidity, momentum, and recent strength.</p>
+                </div>
+                <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                        <h4 style="color: #4ade80; margin: 0 0 8px; font-size: 1.05rem;">
+                            <a href="https://github.com/AvantAI/AvantAI-Backend" target="_blank" style="color: #4ade80; text-decoration: none;">AvantAI-Backend</a>
+                        </h4>
+                        <a href="https://github.com/AvantAI/AvantAI-Backend" target="_blank" style="color: #999; font-size: 0.9rem; text-decoration: none;">View on GitHub →</a>
+                    </div>
+                    <p style="color: #bbb; margin: 0; line-height: 1.6;">Go backend I use for StockVision.AI workflows: data ingestion, watchlists, and backtest/report generation from CSV feeds and CLI tools. Built for fast screening and post-trade analysis.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -899,8 +937,28 @@
         });
 
         // Portfolio growth data
-        const dates = ['Sep 14', 'Sep 18', 'Sep 22', 'Sep 26', 'Sep 30', 'Oct 4', 'Oct 8'];
-        const values = [9202, 9511, 10470, 9821, 10263, 10950, 11915];
+        const dates = ['Oct 6', 'Oct 10', 'Oct 14', 'Oct 18', 'Oct 22', 'Oct 26', 'Oct 30'];
+        const values = [9202, 9511, 10470, 9821, 10263, 10950, 12302];
+
+        // Repos modal controls
+        function openReposModal() {
+            const modal = document.getElementById('reposModal');
+            if (modal) modal.style.display = 'block';
+        }
+
+        function closeReposModal() {
+            const modal = document.getElementById('reposModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        // Close modal when clicking backdrop
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('reposModal');
+            if (!modal) return;
+            if (e.target === modal) {
+                closeReposModal();
+            }
+        });
 
         const canvas = document.getElementById('portfolioChart');
         const ctx = canvas.getContext('2d');
